@@ -1,0 +1,42 @@
+﻿@model Bot.AdminPanel.ViewModels.Subscribers.SubscriberViewModelforEdit
+@{
+    ViewBag.Title = $"{Model.Username} ({Model.Id})";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <form asp-action="Edit" asp-controller="Subscribers" method="Post">
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <input type="file" name="avatarFile" id="avatarFile" hidden />
+            </div>
+            <div class="form-group">
+                <label asp-for="DisplayName" class="control-label"></label>
+                <input type="text" asp-for="DisplayName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input type="text" asp-for="City" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Social" class="control-label"></label>
+                <input type="text" asp-for="Social" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input type="text" asp-for="Phone" class="form-control" />
+            </div>
+            <div class="custom-control custom-switch" style="margin-bottom: 30px;">
+                <input type="checkbox" class="custom-control-input" asp-for="Confirmed">
+                <label class="custom-control-label" asp-for="Confirmed"></label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section PageJavascript {
+
+}

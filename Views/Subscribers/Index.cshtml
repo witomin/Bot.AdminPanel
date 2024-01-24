@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Bot.AdminPanel.ViewModels.Subscribers.SubscriberViewModelforList>
+@{
+    ViewData["Title"] = "Подписчики";
+}
+
+<table class="table table-bordered table-sm js-data-table">
+    <thead>
+        <tr>
+            <th><label asp-for="First().Id"></label></th>
+            <th><label asp-for="First().FirstName"></label></th>
+            <th><label asp-for="First().LastName"></label></th>
+            <th><label asp-for="First().Username"></label></th>
+            <th><label asp-for="First().DisplayName"></label></th>
+            <th><label asp-for="First().City"></label></th>
+            <th><label asp-for="First().Social"></label></th>
+            <th><label asp-for="First().Phone"></label></th>
+            <th><label asp-for="First().Confirmed"></label></th>
+            <th><label asp-for="First().Created"></label></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model) {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.FirstName</td>
+                <td>@user.LastName</td>
+                <td>@user.Username</td>
+                <td>@user.DisplayName</td>
+                <td>@user.City</td>
+                <td>@user.Social</td>
+                <td>@user.Phone</td>
+                <td>
+                    @if (user.Confirmed) {
+                        <i class="fas fa-check" style="color: #01b22d;"></i>
+                    }
+                    else {
+                        <i class="fas fa-times" style="color: #eb0a0a;"></i>
+                    }
+                </td>
+                <td>@user.Created</td>
+                <td>
+                    <a title="Изменить" class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@user.Id"><i class="fas fa-edit"></i></a>
+                    <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                        <button title="Удалить" type="submit" class="btn btn-outline-danger" onclick="return confirm('Удалить пользователя?')"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section PageJavascript {
+    <script>
+        $(function () {
+            $('#menu-subscribers').addClass('active');
+            $('#menu-subscribers').closest('li').addClass('menu-is-opening menu-open');
+            $('#menu-subscribers-list').addClass('active');
+        });</script>
+}

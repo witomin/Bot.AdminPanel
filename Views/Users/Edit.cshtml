@@ -1,0 +1,64 @@
+﻿@model Bot.AdminPanel.ViewModels.Users.EditUserViewModel
+@{
+    ViewBag.Title = $"Профиль пользователя {Model.UserName}";
+}
+@if (!User.IsInRole("superadmin")) {
+    <a title="Сменить пароль" class="btn btn-outline-primary" asp-action="ChangePassword"><i class="fas fa-key"></i></a>
+}
+<div class="row">
+    <div class="col-sm-4">
+        <form asp-action="LoadAvatar" asp-controller="Users" id="avatarForm" method="post" enctype="multipart/form-data">
+            <input type="text" name="id" value="@Model.Id" hidden />
+            <label for="avatarFile" style="cursor:pointer;">
+                <img src="~/users/avatar/@Model.Id" class="img-circle elevation-2" alt="Avatar Image" style="width:450px;height:450px;" />
+            </label>
+            <input type="file" name="avatarFile" id="avatarFile" hidden />
+        </form>
+    </div>
+    <div class="col-sm-6">
+        <form asp-action="Edit" asp-controller="Users">
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <input type="file" name="avatarFile" id="avatarFile" hidden />
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                @if (User.IsInRole("superadmin")) {
+                    <input type="text" asp-for="UserName" class="form-control" />
+                }
+                else {
+                    <input type="text" asp-for="UserName" class="form-control" readonly />
+                }
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input type="text" asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SecondName" class="control-label"></label>
+                <input type="text" asp-for="SecondName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ThirdName" class="control-label"></label>
+                <input type="text" asp-for="ThirdName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input type="text" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Сохранить" class="btn btn-outline-secondary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section PageJavascript {
+    <script>
+        $("#avatarFile").on("change", function () {
+            $("#avatarForm").submit();
+        });
+    </script>
+}

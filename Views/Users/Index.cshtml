@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Bot.AdminPanel.Identity.Types.ApplicationUser>
+@{
+    ViewBag.Title = "Список администраторов";
+}
+
+<a title="Добавить пользователя" class="btn btn-outline-primary" asp-action="Create"><i class="fas fa-user-plus"></i></a>
+<table class="table table-bordered table-sm js-data-table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Логин</th>
+            <th>Email</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Фамилия</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model) {
+            <tr>
+                <td>
+                    <div class="image">
+                        <img src="~/users/avatar/@user.Id" class="img-circle elevation-2" alt="Avatar Image" style="width:32px;height:32px;" />
+                    </div>
+                </td>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.SecondName</td>
+                <td>@user.ThirdName</td>
+                <td>@user.FirstName</td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@user.Id" method="post">
+                        <a title="Изменить" class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@user.Id"><i class="fas fa-edit"></i></a>
+                        <a title="Сменить пароль" class="btn btn-outline-primary" asp-action="ChangePassword" asp-route-id="@user.Id"><i class="fas fa-key"></i></a>
+                        <a title="Права доступа" class="btn btn-outline-primary" asp-controller="Roles" asp-action="Edit" asp-route-userid="@user.Id"><i class="fas fa-user-shield"></i></a>
+                        <button title="Удалить" type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section PageJavascript{
+    <script>
+        $(function () {
+            $('#menu-users').addClass('active');
+            $('#menu-users').closest('li').addClass('menu-is-opening menu-open');
+            $('#menu-users-list').addClass('active');
+        });</script>
+}

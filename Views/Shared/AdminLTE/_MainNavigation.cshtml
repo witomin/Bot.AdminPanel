@@ -1,0 +1,107 @@
+﻿<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a class="brand-link" asp-area="" asp-controller="Home" asp-action="Index">
+        <img src="~/img/Logo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Панель управления</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            @if (User.Identity.IsAuthenticated) {
+                <div class="image">
+                    <img src="~/users/avatar/@User.Identity.Name" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a asp-controller="Users" asp-action="Edit" class="d-block">@User.Identity.Name</a>
+                </div>
+            }
+        </div>
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div> <!-- Sidebar Menu -->
+        @if (User.Identity.IsAuthenticated) {
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                    @if (User.IsInRole("superadmin")) {
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="menu-users">
+                                <i class="nav-icon fas fa-wrench"></i>
+                                <p>
+                                    Настройки
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu-users-list" asp-area="" asp-controller="Users" asp-action="Index">
+                                        <i class="nav-icon fas fa-list"></i>
+                                        <p>Администраторы</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu-users-roles" asp-area="" asp-controller="Roles" asp-action="Index">
+                                        <i class="nav-icon fas fa-user-edit"></i>
+                                        <p>Роли</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu-notifications" asp-area="" asp-controller="Notifications" asp-action="Index">
+                                        <i class="nav-icon fas fa-bell"></i>
+                                        <p>Уведомления</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="menu-hangfire" asp-controller="hangfire" asp-action="Index">
+                                        <i class="nav-icon fas fa-clock"></i>
+                                        <p>Hangfire</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a href="#" class="nav-link" id="menu-subscribers">
+                            <i class="nav-icon fas fa-user-friends"></i>
+                            <p>
+                                Подписчики
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a class="nav-link" id="menu-subscribers-list" asp-area="" asp-controller="Subscribers" asp-action="Index">
+                                    <i class="nav-icon fas fa-list"></i>
+                                    <p>Список</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @*<li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-th"></i>
+                <p>
+                Simple Link
+                <span class="right badge badge-danger">New</span>
+                </p>
+                </a>
+                </li>*@
+                </ul>
+            </nav> <!-- /.sidebar-menu -->
+        }
+    </div>
+    <!-- /.sidebar -->
+</aside>

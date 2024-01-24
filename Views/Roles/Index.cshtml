@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Bot.AdminPanel.ViewModels.Roles.RoleViewModel>
+@{
+    ViewBag.Title = "Список ролей";
+}
+<a title="Добавить роль" asp-action="Create" class="btn btn-outline-primary"><i class="fas fa-user-plus"></i></a>
+<table class="table table-bordered table-sm js-data-table">
+    <thead>
+        <tr>
+            <th><label asp-for="First().Name"></label></th>
+            <th><label asp-for="First().Description"></label></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model) {
+        <tr>
+            <td>@role.Name</td>
+            <td>@role.Description</td>
+            <td>
+                <form asp-action="Delete" asp-route-id="@role.Id" method="post">
+                    <button title="Удалить" type="submit" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+@section PageJavascript{
+    <script>
+        $(function () {
+            $('#menu-users').addClass('active');
+            $('#menu-users').closest('li').addClass('menu-is-opening menu-open');
+            $('#menu-users-roles').addClass('active');
+        });</script>
+}
