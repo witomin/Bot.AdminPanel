@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tools.niap.ru.Data;
 
@@ -10,9 +11,11 @@ using tools.niap.ru.Data;
 namespace Bot.AdminPanel.Migrations.DataDB
 {
     [DbContext(typeof(DataDBContext))]
-    partial class DataDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240125082838_Add_TelegramUpdates")]
+    partial class Add_TelegramUpdates
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -93,9 +96,6 @@ namespace Bot.AdminPanel.Migrations.DataDB
 
                     b.Property<DateTime>("ReceivedTime")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("ReplyMessageContent")
-                        .HasColumnType("longtext");
 
                     b.Property<int>("TelegramUpdateId")
                         .HasColumnType("int");

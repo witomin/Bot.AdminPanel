@@ -21,7 +21,6 @@ namespace Bot.AdminPanel.Controllers {
         /// </summary>
         /// <returns></returns>
         public IActionResult Index() {
-            var subscribers = _dbContext.Subscribers;
             var model = _dbContext.Subscribers.Select(s => new SubscriberViewModelforList(s)).ToList();
             return View(model);
         }
