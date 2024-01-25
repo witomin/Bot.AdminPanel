@@ -1,12 +1,11 @@
-﻿using Bot.AdminPanel.Identity.Types;
-using Bot.AdminPanel.ViewModels.Subscribers;
-using Bot.AdminPanel.ViewModels.Users;
-using Microsoft.AspNetCore.Identity;
+﻿using Bot.AdminPanel.ViewModels.Subscribers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using tools.niap.ru.Data;
 
 namespace Bot.AdminPanel.Controllers {
+    [Authorize]
     public class SubscribersController : Controller {
 
         private readonly ILogger<SubscribersController> _logger;

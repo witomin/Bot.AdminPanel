@@ -1,8 +1,10 @@
 ﻿using Bot.AdminPanel.ViewModels.Correspondence;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using tools.niap.ru.Data;
 
 namespace Bot.AdminPanel.Controllers {
+    [Authorize]
     public class CorrespondenceController : Controller {
         private readonly ILogger<CorrespondenceController> _logger;
         private DataDBContext _dbContext;
