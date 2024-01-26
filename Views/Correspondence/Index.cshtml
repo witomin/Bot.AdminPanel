@@ -15,7 +15,7 @@
     <tbody>
         @foreach (var user in Model) {
             <tr>
-                <td>@user.ReceivedTime</td>
+                <td data-order="@user.ReceivedTime.ToString("yyyyMMddHHmmss")">@user.ReceivedTime</td>
                 <td>@user.From</td>
                 <td>@user.Message</td>
                 <td>@user.ReplyMessage</td>
