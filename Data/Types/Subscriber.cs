@@ -26,9 +26,9 @@ namespace Bot.AdminPanel.Data.Types {
         /// </summary>
         public string? Phone { get; set; }
         /// <summary>
-        /// Признак Подтвержден/Не подтвержден
+        /// Активен/Заблокирован
         /// </summary>
-        public bool Confirmed { get; set; }
+        public bool Confirmed { get; set; } = true;
         /// <summary>
         /// Дата регистрации
         /// </summary>

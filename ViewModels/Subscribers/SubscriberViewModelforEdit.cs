@@ -44,7 +44,7 @@ namespace Bot.AdminPanel.ViewModels.Subscribers {
         /// <summary>
         /// Признак Подтвержден/Не подтвержден
         /// </summary>
-        [Display(Name = "Подтвержден")]
+        [Display(Name = "Активен")]
         public bool Confirmed { get; set; }
         /// <summary>
         /// Дата регистрации

@@ -20,3 +20,13 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.submit-stile-clear {
+    border: none;
+    background: none;
+}
+
+.link-stile-clear {
+    color: inherit;
+    text-decoration: inherit;
+}

@@ -38,6 +38,20 @@ namespace Bot.AdminPanel.Controllers {
             return RedirectToAction("Index");
         }
         /// <summary>
+        /// Блокировать
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult> Block(string id) {
+            var subscriber = _dbContext.Subscribers.SingleOrDefaultAsync(s => s.Id.ToString().Equals(id));
+            if ((await subscriber) != null) {
+                (await subscriber).Confirmed = !(await subscriber).Confirmed;
+                await _dbContext.SaveChangesAsync();
+            }
+            return RedirectToAction("Index");
+        }
+        /// <summary>
         /// Редактировать
         /// </summary>
         /// <param name="id"></param>
