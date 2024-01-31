@@ -18,6 +18,10 @@ namespace Bot.AdminPanel.Data.Types {
         /// </summary>
         public string? City { get; set; }
         /// <summary>
+        /// Код города
+        /// </summary>
+        public string? CityCode { get; set; }
+        /// <summary>
         /// Ссылка на социальные сети
         /// </summary>
         public string? Social { get; set; }
