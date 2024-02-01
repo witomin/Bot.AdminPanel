@@ -20,7 +20,7 @@ namespace Bot.AdminPanel.Data.Types {
         /// <summary>
         /// Код города
         /// </summary>
-        public string? CityCode { get; set; }
+        public int? CityCode { get; set; }
         /// <summary>
         /// Ссылка на социальные сети
         /// </summary>
