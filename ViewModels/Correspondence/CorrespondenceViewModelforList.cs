@@ -1,4 +1,5 @@
 ﻿using Bot.AdminPanel.Data.Types;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using Telegram.Bot.Types;
 
@@ -7,8 +8,8 @@ namespace Bot.AdminPanel.ViewModels.Correspondence {
         private Message? message;
         private Message? replyMessage;
         public CorrespondenceViewModelforList(TelegramUpdate telegramUpdate) {
-            message = System.Text.Json.JsonSerializer.Deserialize<Message>(telegramUpdate?.MessageContent);
-            replyMessage = System.Text.Json.JsonSerializer.Deserialize<Message>(telegramUpdate?.ReplyMessageContent);
+            message = JsonConvert.DeserializeObject<Message>(telegramUpdate?.MessageContent);
+            replyMessage = JsonConvert.DeserializeObject<Message>(telegramUpdate?.ReplyMessageContent);
 
             Id = telegramUpdate.Id;
             ReceivedTime = telegramUpdate.ReceivedTime;
