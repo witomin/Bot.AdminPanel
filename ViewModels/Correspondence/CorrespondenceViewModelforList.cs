@@ -5,18 +5,17 @@ using Telegram.Bot.Types;
 
 namespace Bot.AdminPanel.ViewModels.Correspondence {
     public class CorrespondenceViewModelforList {
-        private Message? message;
+        private Update? update;
         private Message? replyMessage;
         public CorrespondenceViewModelforList(TelegramUpdate telegramUpdate) {
-            message = JsonConvert.DeserializeObject<Message>(telegramUpdate?.MessageContent);
+            update = JsonConvert.DeserializeObject<Update>(telegramUpdate?.Update);
             replyMessage = JsonConvert.DeserializeObject<Message>(telegramUpdate?.ReplyMessageContent);
 
             Id = telegramUpdate.Id;
             ReceivedTime = telegramUpdate.ReceivedTime;
-            From = message?.From?.ToString();
-            Message = $"{message?.Type}: {message?.Text}";
+            From = update?.Message?.From?.ToString() ?? update?.CallbackQuery?.From?.ToString();
+            Message = $"{update?.Type}: {update?.Message?.Text ?? update?.CallbackQuery?.Data}";
             ReplyMessage = $"{replyMessage?.Type}: {replyMessage?.Text}";
-
         }
         public Guid Id { get; set; }
         /// <summary>
