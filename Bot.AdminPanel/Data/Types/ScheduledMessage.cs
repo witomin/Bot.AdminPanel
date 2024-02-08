@@ -21,11 +21,11 @@ namespace Bot.AdminPanel.Data.Types {
         /// <summary>
         /// Периодмчность
         /// </summary>
-        public string Periodicity { get; set; }
+        public SheduledMessagePeriodicity Periodicity { get; set; }
         /// <summary>
         /// Тип сообщений
         /// </summary>
-        public string MessageType {  get; set; }
+        public SheduledMessageType MessageType {  get; set; }
 
     }
 }
