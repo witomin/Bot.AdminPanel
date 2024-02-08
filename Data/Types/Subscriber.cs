@@ -4,7 +4,7 @@ namespace Bot.AdminPanel.Data.Types {
     /// <summary>
     /// Подписчик
     /// </summary>
-    public class Subscriber: User {
+    public class Subscriber : User {
         /// <summary>
         /// Наименование организации
         /// </summary>
@@ -37,5 +37,9 @@ namespace Bot.AdminPanel.Data.Types {
         /// Дата регистрации
         /// </summary>
         public DateTime? Created { get; set; }
+        /// <summary>
+        /// Запланированные сообщения
+        /// </summary>
+        public List<ScheduledMessage>? ScheduledMessages { get; set; }
     }
 }

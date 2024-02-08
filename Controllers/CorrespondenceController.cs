@@ -1,7 +1,7 @@
 ﻿using Bot.AdminPanel.ViewModels.Correspondence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using tools.niap.ru.Data;
+using Bot.AdminPanel.Data;
 
 namespace Bot.AdminPanel.Controllers {
     [Authorize]

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using tools.niap.ru.Data;
+using Bot.AdminPanel.Data;
 
 namespace Bot.AdminPanel.Controllers {
     [Authorize]

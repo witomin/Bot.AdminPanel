@@ -3,6 +3,7 @@ using System;
 using Bot.AdminPanel.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bot.AdminPanel.Migrations.DataDB
 {
     [DbContext(typeof(DataDBContext))]
-    partial class DataDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240207130623_ShedulerMessages_1")]
+    partial class ShedulerMessages_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,12 +39,10 @@ namespace Bot.AdminPanel.Migrations.DataDB
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<long>("SubscriberId")
+                    b.Property<long>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SubscriberId");
 
                     b.ToTable("ScheduledMessages");
                 });
@@ -130,20 +131,6 @@ namespace Bot.AdminPanel.Migrations.DataDB
                     b.HasKey("Id");
 
                     b.ToTable("TelegramUpdates");
-                });
-
-            modelBuilder.Entity("Bot.AdminPanel.Data.Types.ScheduledMessage", b =>
-                {
-                    b.HasOne("Bot.AdminPanel.Data.Types.Subscriber", null)
-                        .WithMany("ScheduledMessages")
-                        .HasForeignKey("SubscriberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Bot.AdminPanel.Data.Types.Subscriber", b =>
-                {
-                    b.Navigation("ScheduledMessages");
                 });
 #pragma warning restore 612, 618
         }

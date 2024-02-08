@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace tools.niap.ru.Data {
+namespace Bot.AdminPanel.Data {
     public class MyKeysContext : DbContext, IDataProtectionKeyContext {
         // A recommended constructor overload when using EF Core 
         // with dependency injection.
