@@ -7,6 +7,7 @@ using Bot.Data.Core;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 
 
@@ -24,9 +25,11 @@ builder.Services.AddDbContext<MyKeysContext>(options => options.UseMySql(
     ServerVersion.Parse("7.4.3")),
     ServiceLifetime.Scoped);
 
-builder.Services.AddDbContext<DataDBContext>(options => options.UseMySql(
-    builder.Configuration.GetConnectionString("DataConnection"),
-    ServerVersion.Parse("7.4.3")),
+builder.Services.AddDbContext<DataDBContext>(options =>
+options.UseMySql(builder.Configuration.GetConnectionString("DataConnection"),
+    ServerVersion.Parse("7.4.3"),
+    optionsBuilder =>
+                optionsBuilder.MigrationsAssembly("Bot.AdminPanel")),
     ServiceLifetime.Scoped);
 
 builder.Services.AddDataProtection().PersistKeysToDbContext<MyKeysContext>();
