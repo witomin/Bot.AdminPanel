@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Bot.AdminPanel.Data.Types {
+namespace Bot.Data.Core.Types {
     /// <summary>
     /// Типы рассылаемых сообщений
     /// </summary>

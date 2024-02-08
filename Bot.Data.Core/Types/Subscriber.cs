@@ -1,6 +1,6 @@
 ﻿using Telegram.Bot.Types;
 
-namespace Bot.AdminPanel.Data.Types {
+namespace Bot.Data.Core.Types {
     /// <summary>
     /// Подписчик
     /// </summary>

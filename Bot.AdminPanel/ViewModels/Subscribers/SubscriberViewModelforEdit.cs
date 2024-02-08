@@ -1,4 +1,4 @@
-﻿using Bot.AdminPanel.Data.Types;
+﻿using Bot.Data.Core.Types;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bot.AdminPanel.ViewModels.Subscribers {

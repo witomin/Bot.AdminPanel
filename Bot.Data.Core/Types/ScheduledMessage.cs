@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Bot.AdminPanel.Data.Types {
+namespace Bot.Data.Core.Types {
     /// <summary>
     /// Запланированное сообщение
     /// </summary>

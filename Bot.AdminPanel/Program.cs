@@ -1,12 +1,12 @@
 using AspNetCore.Unobtrusive.Ajax;
+using Bot.AdminPanel.Data;
 using Bot.AdminPanel.Identity;
 using Bot.AdminPanel.Identity.Types;
 using Bot.AdminPanel.Mail;
+using Bot.Data.Core;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Bot.AdminPanel.Data;
 
 
 

@@ -1,8 +1,8 @@
 ﻿using Bot.AdminPanel.ViewModels.Subscribers;
+using Bot.Data.Core;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Bot.AdminPanel.Data;
 
 namespace Bot.AdminPanel.Controllers {
     [Authorize]

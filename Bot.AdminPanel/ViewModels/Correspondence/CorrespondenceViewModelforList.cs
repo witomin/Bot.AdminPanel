@@ -1,4 +1,4 @@
-﻿using Bot.AdminPanel.Data.Types;
+﻿using Bot.Data.Core.Types;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using Telegram.Bot.Types;

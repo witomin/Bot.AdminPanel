@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using Telegram.Bot.Types.Enums;
 
-namespace Bot.AdminPanel.Data.Types {
+namespace Bot.Data.Core.Types {
     /// <summary>
     /// Telegram Update
     /// </summary>

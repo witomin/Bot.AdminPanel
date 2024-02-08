@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Bot.AdminPanel.Data.Types;
+﻿using Bot.Data.Core.Types;
+using Microsoft.EntityFrameworkCore;
 
-namespace Bot.AdminPanel.Data {
+namespace Bot.Data.Core {
     public class DataDBContext : DbContext {
         /// <summary>
         /// Подписчики
