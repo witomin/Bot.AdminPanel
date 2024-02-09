@@ -41,5 +41,9 @@ namespace Bot.Data.Core.Types {
         /// Запланированные сообщения
         /// </summary>
         public List<ScheduledMessage>? ScheduledMessages { get; set; }
+        /// <summary>
+        /// История переписки
+        /// </summary>
+        public List<TelegramUpdate>? TelegramUpdates { get; set; }
     }
 }

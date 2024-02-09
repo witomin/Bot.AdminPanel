@@ -8,6 +8,10 @@ namespace Bot.Data.Core.Types {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         /// <summary>
+        /// Идентификатор подписчика
+        /// </summary>
+        public long SubscriberId { get; set; }
+        /// <summary>
         /// Время получения Update
         /// </summary>
         public DateTime ReceivedTime { get; set; }

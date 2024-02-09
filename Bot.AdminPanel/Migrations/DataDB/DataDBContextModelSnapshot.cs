@@ -37,6 +37,9 @@ namespace Bot.AdminPanel.Migrations.DataDB
                     b.Property<long>("SubscriberId")
                         .HasColumnType("bigint");
 
+                    b.Property<TimeOnly>("Time")
+                        .HasColumnType("time(6)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("SubscriberId");
@@ -122,10 +125,15 @@ namespace Bot.AdminPanel.Migrations.DataDB
                     b.Property<string>("ReplyMessageContent")
                         .HasColumnType("longtext");
 
+                    b.Property<long>("SubscriberId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Update")
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SubscriberId");
 
                     b.ToTable("TelegramUpdates");
                 });
@@ -139,9 +147,20 @@ namespace Bot.AdminPanel.Migrations.DataDB
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Bot.Data.Core.Types.TelegramUpdate", b =>
+                {
+                    b.HasOne("Bot.Data.Core.Types.Subscriber", null)
+                        .WithMany("TelegramUpdates")
+                        .HasForeignKey("SubscriberId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Bot.Data.Core.Types.Subscriber", b =>
                 {
                     b.Navigation("ScheduledMessages");
+
+                    b.Navigation("TelegramUpdates");
                 });
 #pragma warning restore 612, 618
         }

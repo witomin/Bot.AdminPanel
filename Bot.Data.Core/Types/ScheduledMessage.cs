@@ -26,6 +26,10 @@ namespace Bot.Data.Core.Types {
         /// Тип сообщений
         /// </summary>
         public SheduledMessageType MessageType {  get; set; }
+        /// <summary>
+        /// Время отправки сообщений
+        /// </summary>
+        public TimeOnly Time { get; set; }
 
     }
 }
