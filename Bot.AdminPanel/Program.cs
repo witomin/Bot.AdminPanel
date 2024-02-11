@@ -1,13 +1,15 @@
 using AspNetCore.Unobtrusive.Ajax;
 using Bot.AdminPanel.Data;
+using Bot.AdminPanel.Hangfire;
 using Bot.AdminPanel.Identity;
 using Bot.AdminPanel.Identity.Types;
 using Bot.AdminPanel.Mail;
 using Bot.Data.Core;
+using Hangfire;
+using Hangfire.MySql;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 
 
@@ -41,6 +43,20 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFramework
 builder.Services.Configure<MailServiceConfig>(builder.Configuration.GetSection("MailServer"));
 builder.Services.AddScoped<MailService>();
 
+builder.Services.AddHangfire(configuration => configuration
+        .SetDataCompatibilityLevel(CompatibilityLevel.Version_180)
+        .UseSimpleAssemblyNameTypeSerializer()
+        .UseRecommendedSerializerSettings()
+        .UseStorage(
+    new MySqlStorage(
+        builder.Configuration.GetConnectionString("HangfireConnection"),
+        new MySqlStorageOptions {
+            TablesPrefix = "Hangfire"
+        })
+    ));
+
+//builder.Services.AddHangfireServer();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,6 +73,11 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+//Äארבמנה Hangfire
+app.UseHangfireDashboard("/hangfire", new DashboardOptions {
+    Authorization = new[] { new AuthorizationFilter() }
+});
 
 app.MapControllerRoute(
     name: "default",

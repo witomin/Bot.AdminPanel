@@ -66,8 +66,6 @@ namespace Bot.AdminPanel.Controllers {
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model) {
             if (ModelState.IsValid) {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                //TODO: Доработать подтверждение емейла пользователем
-                //  if (user == null || !(await _userManager.IsEmailConfirmedAsync(user))) {
                 if (user == null) {
                     // пользователь с данным email может отсутствовать в бд
                     // тем не менее мы выводим стандартное сообщение, чтобы скрыть 

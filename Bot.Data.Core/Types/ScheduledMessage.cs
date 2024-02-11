@@ -30,6 +30,10 @@ namespace Bot.Data.Core.Types {
         /// Время отправки сообщений
         /// </summary>
         public TimeOnly Time { get; set; }
+        /// <summary>
+        /// Идентификатор задания в Hangfire
+        /// </summary>
+        public string HangfireJobId { get; set; }
 
     }
 }
